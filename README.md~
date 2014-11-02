@@ -9,7 +9,4 @@ git commit -m "Your message here"
 git push
 
 Process to clone repo:
-git clone https://github.com/flownandez/insta-netflix-geni.git
-
-Update geni branch:
-git pull https://github.com/flownandez/insta-netflix-geni.git
+git clone httpgithubaddress
