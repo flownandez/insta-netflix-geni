@@ -5,7 +5,7 @@ HOSTrecv1 = '10.10.0.0'   # Symbolic name meaning all available interfaces
 PORTrecv1 = 8887 # Arbitrary non-privileged port
 HOSTrecv2 = '10.10.1.0'   # Symbolic name meaning all available interfaces
 PORTrecv2 = 8888 # Arbitrary non-privileged port
-HOSTsend = '10.10.4.1'
+HOSTsend = '10.10.4.0'
 PORTsend = 8889
  
 ############### Datagram (udp) RECEV1 socket ###############

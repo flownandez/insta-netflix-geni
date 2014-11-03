@@ -1,8 +1,8 @@
 import socket
 import sys
  
-HOSTrecv1 = '10.10.4.0'   # Symbolic name meaning all available interfaces
-PORTrecv1 = 8887 # Arbitrary non-privileged port
+HOSTrecv1 = '10.10.4.1'   # Symbolic name meaning all available interfaces
+PORTrecv1 = 8889 # Arbitrary non-privileged port
 HOSTrecv2 = '10.10.5.0'   # Symbolic name meaning all available interfaces
 PORTrecv2 = 8888 # Arbitrary non-privileged port
 HOSTsend = '10.10.6.1'
