@@ -16,7 +16,7 @@ while(1) :
      
     try :
         #Set the whole string
-        s.sendto(msg, (host, port))
+        s.sendto(str(msg), (host, port))
          
         # receive data from client (data, addr)
         d = s.recvfrom(1024)
