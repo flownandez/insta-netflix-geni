@@ -46,7 +46,7 @@ while 1:
     else :
         recevtime = time.time()
         transtime = recevtime - startime
-        file.write(str(transtime) + ' ' + logdata[0] + '\n')
+        file.write(str(transtime) + '\n')#+ ' ' + logdata[0] + '\n')
      
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
