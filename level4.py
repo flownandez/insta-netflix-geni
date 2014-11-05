@@ -44,7 +44,7 @@ while 1:
         file.write(str(startime) + ' ' + logdata[0] + '\n')
     else :
         recevtime = time.time()
-        transtime = startime - recevtime
+        transtime = recevtime - startime
         file.write(str(transtime) + ' ' + logdata[0] + '\n')
      
     s.sendto(reply , addr)
