@@ -24,7 +24,7 @@ except socket.error , msg:
 print 'Socket bind complete'
  
 firstround = 1
-file = open("datalog", "w")
+file = open("datalog2", "w")
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)
@@ -50,7 +50,7 @@ while 1:
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
      
-    if int(logdata[0]) > 500 :
+    if transtime > 610 :
         file.close()
         break
 s.close()
