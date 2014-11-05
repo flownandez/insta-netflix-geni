@@ -1,2 +1,0 @@
-# Start project
-# Change example
