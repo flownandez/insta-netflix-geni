@@ -38,7 +38,7 @@ while 1:
     reply = 'OK...' + data
     logdata = data.split()
 
-    if firstround = 1
+    if firstround == 1 :
         startime = time.time()
         firstround = 0
         file.write(str(startime) + ' ' + logdata[0])
@@ -50,7 +50,7 @@ while 1:
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
      
-     if logdata[0] > 500 
+     if logdata[0] > 500 :
         file.close()
         break
 s.close()
