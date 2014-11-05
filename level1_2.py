@@ -10,9 +10,9 @@ except socket.error:
  
 host = '10.10.2.2';
 port = 8888;
- 
+msg = 1
+
 while(1) :
-    msg = 1
      
     try :
         #Set the whole string
