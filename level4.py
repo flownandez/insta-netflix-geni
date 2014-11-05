@@ -42,7 +42,7 @@ while 1:
         startime = time.time()
         firstround = 0
         file.write(str(startime) + ' ' + logdata[0])
-    elif :
+    else :
         recevtime = time.time()
         transtime = startime - recevtime
         file.write(str(transtime) + ' ' + logdata[0])
