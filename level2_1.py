@@ -39,20 +39,26 @@ except socket.error , msg:
 print 'Socket bind complete'
 
 ############### Datagram (udp) SEND socket ###############
-try :
-    ssend = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    print 'Socket created'
-except socket.error, msg :
-    print 'Failed to create socket. Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
-    sys.exit()
-# Bind socket to local host and port
-try:
-    ssend.bind((HOSTsend, PORTsend))
-except socket.error , msg:
-    print 'Bind failed. Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
-    sys.exit()
-print 'Socket bind complete'
+# try :
+#     ssend = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+#     print 'Socket created'
+# except socket.error, msg :
+#     print 'Failed to create socket. Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
+#     sys.exit()
+# # Bind socket to local host and port
+# try:
+#     ssend.bind((HOSTsend, PORTsend))
+# except socket.error , msg:
+#     print 'Bind failed. Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
+#     sys.exit()
+# print 'Socket bind complete'
  
+try:
+    ssend = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+except socket.error:
+    print 'Failed to create socket'
+    sys.exit()
+
 ############### now keep talking with the client ###############
 while 1:
     # receive data from client (data, addr)
