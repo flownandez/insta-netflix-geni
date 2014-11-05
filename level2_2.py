@@ -1,12 +1,12 @@
 import socket
 import sys
  
-HOSTrecv1 = '10.10.5.2'   # Symbolic name meaning all available interfaces
-PORTrecv1 = 8889 # Arbitrary non-privileged port
-HOSTrecv2 = '10.10.6.2'   # Symbolic name meaning all available interfaces
-PORTrecv2 = 9001 # Arbitrary non-privileged port
-HOSTsend = '10.10.7.2'
-PORTsend = 8890
+HOSTrecv1 = '10.10.3.2'   # Symbolic name meaning all available interfaces
+PORTrecv1 = 8887 # Arbitrary non-privileged port
+HOSTrecv2 = '10.10.4.2'   # Symbolic name meaning all available interfaces
+PORTrecv2 = 8888 # Arbitrary non-privileged port
+HOSTsend = '10.10.6.2'
+PORTsend = 9001
  
 ############### Datagram (udp) RECEV1 socket ###############
 try :
@@ -38,7 +38,7 @@ except socket.error , msg:
     sys.exit()
 print 'Socket bind complete'
 
-# ############### Datagram (udp) SEND socket ###############
+############### Datagram (udp) SEND socket ###############
 # try :
 #     ssend = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 #     print 'Socket created'
@@ -58,7 +58,7 @@ try:
 except socket.error:
     print 'Failed to create socket'
     sys.exit()
- 
+
 ############### now keep talking with the client ###############
 while 1:
     # receive data from client (data, addr)
@@ -74,7 +74,12 @@ while 1:
     srecev1.sendto(reply1 , addr1)
     print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 
-        # receive data from client (data, addr)
+    # send data from clients (data, addr) to layer 3
+    newdata = d1[0] 
+    newaddr = (HOSTsend, PORTsend)
+    ssend.sendto(newdata , newaddr) 
+
+    # receive data from client (data, addr)
     d2 = srecev2.recvfrom(1024)
     data2 = d2[0]
     addr2 = d2[1]
@@ -88,8 +93,7 @@ while 1:
     print 'Message[' + addr2[0] + ':' + str(addr2[1]) + '] - ' + data2.strip()
 
     # send data from clients (data, addr) to layer 3
-    newdata = d1[0] + ' ' + d2[0] 
+    newdata = d2[0] 
     newaddr = (HOSTsend, PORTsend)
-          
-    ssend.sendto(newdata , newaddr)     
+    ssend.sendto(newdata , newaddr) 
 #s.close(
