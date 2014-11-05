@@ -1,11 +1,11 @@
 import socket
 import sys
  
-HOSTrecv1 = '10.10.4.0'   # Symbolic name meaning all available interfaces
+HOSTrecv1 = '10.10.5.1'   # Symbolic name meaning all available interfaces
 PORTrecv1 = 8889 # Arbitrary non-privileged port
-HOSTrecv2 = '10.10.5.0'   # Symbolic name meaning all available interfaces
+HOSTrecv2 = '10.10.6.1'   # Symbolic name meaning all available interfaces
 PORTrecv2 = 8888 # Arbitrary non-privileged port
-HOSTsend = '10.10.6.0'
+HOSTsend = '10.10.7.2'
 PORTsend = 8890
  
 ############### Datagram (udp) RECEV1 socket ###############
