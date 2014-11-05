@@ -50,7 +50,7 @@ while 1:
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
      
-     if logdata[0] > 500 :
+    if logdata[0] > 500 :
         file.close()
         break
 s.close()
