@@ -1,5 +1,6 @@
 import socket
 import sys
+from datetime import time
  
 HOST = '10.10.7.2'   # Symbolic name meaning all available interfaces
 PORT = 8890 # Arbitrary non-privileged port
@@ -22,6 +23,8 @@ except socket.error , msg:
      
 print 'Socket bind complete'
  
+firstround = 1
+file = open("datalog", "w")
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)
@@ -33,8 +36,21 @@ while 1:
         break
      
     reply = 'OK...' + data
+    logdata = data.split()
+
+    if firstround = 1
+        startime = time.time()
+        firstround = 0
+        file.write(str(startime) + ' ' + logdata[0])
+    elif
+        recevtime = time.time()
+        transtime = startime - recevtime
+        file.write(str(transtime) + ' ' + logdata[0])
      
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
      
+     if logdata[0] > 500 
+        file.close()
+        break
 s.close()
