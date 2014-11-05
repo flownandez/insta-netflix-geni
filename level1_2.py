@@ -28,7 +28,7 @@ while(1) :
         addr = d[1]
          
         print 'Server reply : ' + reply
-        msgNum = msgNum + 1
+        msgNum = msgNum + 2
      
     except socket.error, msg:
         print 'Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
