@@ -24,6 +24,7 @@ except socket.error , msg:
 print 'Socket bind complete'
  
 firstround = 1
+transtime = 0
 file = open("datalog2", "w")
 #now keep talking with the client
 while 1:
