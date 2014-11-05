@@ -10,10 +10,14 @@ except socket.error:
  
 host = '10.10.2.2';
 port = 8888;
-msg = 1
+msg = ""
+msgNum = 1
 
 while(1) :
-     
+    msg = str(msgNum) + " "
+    while len(msg) < 1024 :
+        msg = msg + "A"
+        
     try :
         #Set the whole string
         s.sendto(str(msg), (host, port))

@@ -8,12 +8,16 @@ except socket.error:
     print 'Failed to create socket'
     sys.exit()
  
-host = '10.10.1.2';
-port = 8887;
-msg = 1
+host = '10.10.1.2'
+port = 8887
+msg = ""
+msgNum = 1
 
 while(1) :
-     
+    msg = str(msgNum) + " "
+    while len(msg) < 1024 :
+        msg = msg + "A"
+        
     try :
         #Set the whole string
         s.sendto(str(msg), (host, port))
@@ -24,7 +28,7 @@ while(1) :
         addr = d[1]
          
         print 'Server reply : ' + reply
-        msg = msg + 1
+        msgNum = msgNum + 1
      
     except socket.error, msg:
         print 'Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
