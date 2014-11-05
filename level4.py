@@ -41,16 +41,16 @@ while 1:
     if firstround == 1 :
         startime = time.time()
         firstround = 0
-        file.write(str(startime) + ' ' + logdata[0])
+        file.write(str(startime) + ' ' + logdata[0] + '\n')
     else :
         recevtime = time.time()
         transtime = startime - recevtime
-        file.write(str(transtime) + ' ' + logdata[0])
+        file.write(str(transtime) + ' ' + logdata[0] + '\n')
      
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
      
-    if logdata[0] > 500 :
+    if int(logdata[0]) > 500 :
         file.close()
         break
 s.close()
