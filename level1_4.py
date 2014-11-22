@@ -9,9 +9,9 @@ except socket.error:
     sys.exit()
  
 host = '10.10.4.2'
-port = 8887
+port = 8888
 msg = ""
-msgNum = 4
+msgNum = 3
 
 while(1) :
     msg = str(msgNum) + " "

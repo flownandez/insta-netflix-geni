@@ -11,7 +11,7 @@ except socket.error:
 host = '10.10.3.2'
 port = 8887
 msg = ""
-msgNum = 3
+msgNum = 2
 
 while(1) :
     msg = str(msgNum) + " "
