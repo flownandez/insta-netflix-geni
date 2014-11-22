@@ -25,9 +25,9 @@ while(1) :
         # receive data from client (data, addr)
         d = s.recvfrom(1024)
         reply = d[0]
-        addr = d[1]
+        replytmp = reply.split()
          
-        print 'Server reply : ' + reply
+        print 'Server reply : ' + replytmp[0]
         msgNum = msgNum + 4
      
     except socket.error, msg:

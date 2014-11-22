@@ -52,7 +52,7 @@ while 1:
     s.sendto(reply , addr)
     #print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
     #print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
-    datatmp = data.strip()
+    datatmp = data.split()
     print(datatmp[0])
 
     if transtime > 30:
