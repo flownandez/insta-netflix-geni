@@ -25,7 +25,7 @@ print 'Socket bind complete'
  
 firstround = 1
 transtime = 0
-file = open("datalog2", "w")
+file = open("datalog2.txt", "w")
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)

@@ -11,7 +11,7 @@ except socket.error:
 host = '10.10.3.2'
 port = 8887
 msg = ""
-msgNum = 0
+msgNum = 3
 
 while(1) :
     msg = str(msgNum) + " "
@@ -28,7 +28,7 @@ while(1) :
         addr = d[1]
          
         print 'Server reply : ' + reply
-        msgNum = msgNum + 2
+        msgNum = msgNum + 4
      
     except socket.error, msg:
         print 'Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
