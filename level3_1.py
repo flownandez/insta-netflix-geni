@@ -74,7 +74,7 @@ while 1:
     srecev1.sendto(reply1 , addr1)
     print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 
-        # receive data from client (data, addr)
+    # receive data from client (data, addr)
     d2 = srecev2.recvfrom(1024)
     data2 = d2[0]
     addr2 = d2[1]
@@ -92,4 +92,4 @@ while 1:
     newaddr = (HOSTsend, PORTsend)
           
     ssend.sendto(newdata , newaddr)     
-#s.close(
+#s.close()

@@ -96,4 +96,4 @@ while 1:
     newdata = d2[0] 
     newaddr = (HOSTsend, PORTsend)
     ssend.sendto(newdata , newaddr) 
-#s.close(
+#s.close()

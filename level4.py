@@ -25,12 +25,13 @@ print 'Socket bind complete'
  
 firstround = 1
 transtime = 0
-file = open("datalog2.txt", "w")
+file = open("datalog4.txt", "w")
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)
     d = s.recvfrom(1024)
     data = d[0]
+    print(data)
     addr = d[1]
      
     if not data: 
@@ -51,7 +52,7 @@ while 1:
     s.sendto(reply , addr)
     print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
      
-    if transtime > 610 :
+    if transtime > 10 :
         file.close()
         break
 s.close()
