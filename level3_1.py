@@ -38,7 +38,7 @@ except socket.error , msg:
     sys.exit()
 print 'Socket bind complete'
 
-# ############### Datagram (udp) SEND socket ###############
+############### Datagram (udp) SEND socket ###############
 # try :
 #     ssend = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 #     print 'Socket created'
@@ -91,7 +91,7 @@ while 1:
     datatmp = data2.split()
     print(datatmp[0])
 
-    # send data from clients (data, addr) to layer 3
+    # send data from clients (data, addr) to layer 4
     newdata = d1[0] + ' ' + d2[0] 
     newaddr = (HOSTsend, PORTsend)
           

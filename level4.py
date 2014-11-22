@@ -31,7 +31,7 @@ while 1:
     # receive data from client (data, addr)
     d = s.recvfrom(1024)
     data = d[0]
-    print(data)
+    #print(data)
     addr = d[1]
      
     if not data: 
@@ -52,8 +52,8 @@ while 1:
     s.sendto(reply , addr)
     #print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
     #print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
-    datatmp = data.split()
-    print(datatmp[0])
+    #datatmp = data.split()
+    print(datalog[0])
 
     if transtime > 30:
         file.close()
