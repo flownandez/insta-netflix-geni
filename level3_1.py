@@ -76,6 +76,11 @@ while 1:
     datatmp = data1.split()
     print(datatmp[0])
 
+    # send data from clients (data, addr) to layer 4
+    newdata = d1[0] 
+    newaddr = (HOSTsend, PORTsend)
+    ssend.sendto(newdata , newaddr) 
+
     # receive data from client (data, addr)
     d2 = srecev2.recvfrom(1024)
     data2 = d2[0]
@@ -92,8 +97,7 @@ while 1:
     print(datatmp[0])
 
     # send data from clients (data, addr) to layer 4
-    newdata = d1[0] + ' ' + d2[0] 
+    newdata = d2[0] 
     newaddr = (HOSTsend, PORTsend)
-          
-    ssend.sendto(newdata , newaddr)     
+    ssend.sendto(newdata , newaddr) 
 #s.close()
