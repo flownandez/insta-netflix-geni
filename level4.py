@@ -50,9 +50,12 @@ while 1:
         file.write(str(transtime) + ' ' + logdata[0] + '\n')
      
     s.sendto(reply , addr)
-    print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
-     
-    if transtime > 10 :
+    #print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
+    #print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
+    datatmp = data.strip()
+    print(datatmp[0])
+
+    if transtime > 30:
         file.close()
         break
 s.close()
