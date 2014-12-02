@@ -158,7 +158,7 @@ while 1:
 			#print "tokensAllocated1: " + str(tokensAllocated1) + " --- tokensToAllocate1: " + str(tokensToAllocate1)					
 			if(tokensAllocated1 < tokensToAllocate1):
 				if (tokenNumber < totalTokens) :
-					print "MESSAGE 1 : " + message1
+					#print "MESSAGE 1 : " + message1
 					message1 = message1 + " " + str(tokenNumber); #allocate token by adding token number to message
 					tokenNumber = tokenNumber + 1; #increment token number
 					tokensAllocated1 = tokensAllocated1 + 1; #node 1 has been assigned 1 more token
@@ -220,7 +220,7 @@ while 1:
 		
 		#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 		datatmp = data.split()
-		print(datatmp[0] + " " + datatmp[1])
+		#print(datatmp[0] + " " + datatmp[1])
 		if(int(datatmp[1]) == 1) :
 			pps1 = pps1 + 1;
 		if(int(datatmp[1]) == 2) :

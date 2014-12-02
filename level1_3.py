@@ -29,7 +29,7 @@ while(1) :
 		reply2 = reply;		
 		reply = d[0]
 		addr = d[1]
-		print 'Server reply : ' + reply
+		#print 'Server reply : ' + reply
 		
 		if reply != reply2 :
 			replytmp = reply.split()

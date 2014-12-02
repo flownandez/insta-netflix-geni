@@ -25,7 +25,7 @@ print 'Socket bind complete'
  
 firstround = 1
 transtime = 0
-file = open("datalog4.txt", "w")
+file = open("ScenarioA.txt", "w")
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)
@@ -55,7 +55,7 @@ while 1:
     #datatmp = data.split()
     print(logdata[0] + " " + logdata[1])
 
-    if transtime > 30:
+    if int(logdata[0]) == 30000:
         file.close()
         break
 s.close()
