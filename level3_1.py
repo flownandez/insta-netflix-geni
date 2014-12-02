@@ -131,25 +131,25 @@ while 1:
 		while tokenNumber < totalTokens : #perform until all tokens are allocated
 			if(tokensAllocated1 < tokensToAllocate1):
 				if (tokenNumber < totalTokens) :
-					message1 = message1 + " " + tokenNumber; #allocate token by adding token number to message
+					message1 = message1 + " " + str(tokenNumber); #allocate token by adding token number to message
 					tokenNumber = tokenNumber + 1; #increment token number
 					tokensAllocated1 = tokensAllocated1 + 1; #node 1 has been assigned 1 more token
 
 			if(tokensAllocated2 < tokensToAllocate2):
 				if(tokenNumber < totalTokens) :
-					message2 = message2 + " " + tokenNumber;
+					message2 = message2 + " " + str(tokenNumber);
 					tokenNumber = tokenNumber + 1; #increment token number
 					tokensAllocated2 = tokensAllocated2 + 1;
 
 			if(tokensAllocated3 < tokensToAllocate3):
 				if(tokenNumber < totalTokens) :
-					message3 = message3 + " " + tokenNumber;
+					message3 = message3 + " " + str(tokenNumber);
 					tokenNumber = tokenNumber + 1; #increment token number
 					tokensAllocated3 = tokensAllocated3 + 1;
 
 			if(tokensAllocated4 < tokensToAllocate4) :
 				if(tokenNumber < totalTokens) :
-					message4 = message4 + " " + tokenNumber;
+					message4 = message4 + " " + str(tokenNumber);
 					tokenNumber = tokenNumber + 1; #increment token number
 					tokensAllocated4 = tokensAllocated4 + 1;
 
