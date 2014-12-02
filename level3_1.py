@@ -70,6 +70,7 @@ pps2 = 0
 pps3 = 0
 pps4 = 0
 packetsReceived = [];
+previousMessages = [" ", " ", " ", " "];
 for i in range(30101) :
 	packetsReceived.append(0) ;
 
@@ -83,10 +84,10 @@ while 1:
 		#this part finds the lowest packets per second of any level1 node
 		lowest = min(pps1, pps2, pps3, pps4);
 		
-		print "pps1: ------  " + str(pps1)		
-		print "pps2: ------  " + str(pps2)
-		print "pps3: ------  " + str(pps3)
-		print "pps4: ------  " + str(pps4)		
+		#print "pps1: ------  " + str(pps1)		
+		#print "pps2: ------  " + str(pps2)
+		#print "pps3: ------  " + str(pps3)
+		#print "pps4: ------  " + str(pps4)		
 
 
 		#this is where the number of tokens each level1 node gets are assigned
@@ -191,14 +192,21 @@ while 1:
 			message3 = message3 + " 0";
 		if (tokensAllocated4 == 0):
 			message4 = message4 + " 0";
-		message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
-		message2 = message2 + " Y " + str(startingPkt);
-		message3 = message3 + " X " + str(startingPkt);
-		message4 = message4 + " Y " + str(startingPkt);
+		
+		if previousMessages == [message1, message2, message3, message4] :
+			previousMessages = [message1, message2, message3, message4];
+		else :
+			print 'New Message'
+			previousMessages = [message1, message2, message3, message4];
+			message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
+			message2 = message2 + " Y " + str(startingPkt);
+			message3 = message3 + " X " + str(startingPkt);
+			message4 = message4 + " Y " + str(startingPkt);
 
-		reply2_1 = message1 + " B " + message2;
-		reply2_2 = message3 + " B " + message4;
-		pps1 = 0
+			reply2_1 = message1 + " B " + message2;
+			reply2_2 = message3 + " B " + message4;
+
+		pps1 = 0 #reset counters
 		pps2 = 0 
 		pps3 = 0
 		pps4 = 0
