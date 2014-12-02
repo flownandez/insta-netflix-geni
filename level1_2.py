@@ -40,6 +40,8 @@ while(1) :
 			tokens = [];
 			for i in range(indexB + 2, indexY):
 				tokens.append(int(replytmp[i]));
+			if len(tokens) == 0 :
+				tokens.append(0);
 			#tokens = int(replytmp[indexX - 1]);
 			startingPkt = int(replytmp[indexY + 1])
 
