@@ -187,9 +187,9 @@ while 1:
 			message1 = message1 + " 0";
 		if (tokensAllocated2 == 0):
 			message2 = message2 + " 0";
-		if (tokensAllocated1 == 0):
+		if (tokensAllocated3 == 0):
 			message3 = message3 + " 0";
-		if (tokensAllocated1 == 0):
+		if (tokensAllocated4 == 0):
 			message4 = message4 + " 0";
 		message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
 		message2 = message2 + " Y " + str(startingPkt);
