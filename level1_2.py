@@ -41,7 +41,7 @@ while(1) :
 			for i in range(indexB + 2, indexY):
 				tokens.append(int(replytmp[i]));
 			#tokens = int(replytmp[indexX - 1]);
-			startingPkt = int(replytmp[indexX + 1])
+			startingPkt = int(replytmp[indexY + 1])
 
 		currentToken = min(tokens);
 		msgNum = startingPkt + currentToken;
