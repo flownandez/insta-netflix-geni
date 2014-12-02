@@ -1,7 +1,8 @@
 import socket
 import sys
 import time
- 
+import select
+
 HOSTrecv1 = '10.10.5.2'   # Symbolic name meaning all available interfaces
 PORTrecv1 = 8889 # Arbitrary non-privileged port
 HOSTrecv2 = '10.10.6.2'   # Symbolic name meaning all available interfaces
