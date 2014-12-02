@@ -63,7 +63,8 @@ except socket.error:
 
 startTime = time.time();
 oneSecond = 0;
-reply2_1, reply2_2 = "START"
+reply2_1 = "START"
+reply2_2 = "START"
 pps1, pps2, pps3, pps4 = 0;
 packetsReceived = [];
 for i in range(30100) :
