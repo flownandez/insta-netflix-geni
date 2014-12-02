@@ -44,9 +44,9 @@ while(1) :
 		currentToken = min(tokens);
 		msgNum = startingPkt + currentToken;
 		print 'Before increment tokens[0] = ' + str(tokens[0]);
-		for token in tokens :
-			if currentToken == token : 
-				token = token + totalTokens;
+		for i in range(0, len(tokens)) :
+			if tokens[i] == currentToken : 
+				tokens[i] = tokens[i] + totalTokens;
 				#else tokens[1] = tokens[1] + totalTokens; 
 		print 'After increment tokens[0] = ' + str(tokens[0]);
      
