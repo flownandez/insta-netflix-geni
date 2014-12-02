@@ -15,7 +15,7 @@ msgNum = 3
 tokens = []
 reply = ""
 while(1) :
-    msg = str(msgNum) + " 2 "
+    msg = str(msgNum) + " 4 "
     while len(msg) < 1024 :
         msg = msg + "A"
 

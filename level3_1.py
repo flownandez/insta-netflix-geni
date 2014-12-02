@@ -231,8 +231,8 @@ while 1:
 			pps4 = pps4 + 1;
 		
 		packetsReceived[int(datatmp[0])] = 1;  
-		if(int(datatmp[0]) > 5000) :
-			s.close();
+		if(int(datatmp[0]) > 30000) :
+			ssend.close();
 		# send data from clients (data, addr) to layer 4
 		newdata = d[0] 
 		newaddr = (HOSTsend, PORTsend)
