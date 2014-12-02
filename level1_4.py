@@ -29,6 +29,7 @@ while(1) :
 		reply2 = reply;		
 		reply = d[0]
 		addr = d[1]
+		print 'Server reply : ' + reply
 		#print 'Server reply : ' + reply + ' INDEX: ' + str(indexB)
 		#print 'Server replytmp : ' + replytmp[indexB + 1] + " " + replytmp[indexB + 2]
 	
