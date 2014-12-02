@@ -75,6 +75,7 @@ while 1:
 			reply = data; 	 	
 
 		else :	 
+			print addr
 			sock.sendto(reply , addr)
 			#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 			datatmp = data.split()
