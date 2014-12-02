@@ -95,7 +95,8 @@ while 1:
 		elif(pps1 < (lowest + 5)) :
 			tokensToAllocate1 = 1;	 #if pps1 is close to lowest, give it 1 token
 		else :
-			tokensToAllocate1 = int((pps1 + 5) / (lowest + 1));  #else give it tokens proportional to its pps compared to lowest
+			tokensToAllocate = 1;  			
+			#tokensToAllocate1 = int((pps1 + 5) / (lowest + 1));  #else give it tokens proportional to its pps compared to lowest
 		                                           				# can hardcode to 2 if issues
 
 		if(pps2 == 0) :
