@@ -93,19 +93,19 @@ while 1:
 		if(lowest == 0) :	#this will happen on startup or when we are testing only a couple of the nodes
 			if(pps1 == 0): 
 				tokensToAllocate1 = 0;
-			else
+			else:
 				tokensToAllocate1 = 1;
 			if(pps2 == 0): 
 				tokensToAllocate2 = 0;
-			else
+			else:
 				tokensToAllocate2 = 1;
 			if(pps3 == 0): 
 				tokensToAllocate3 = 0;
-			else
+			else:
 				tokensToAllocate3 = 1;
 			if(pps4 == 0): 
 				tokensToAllocate4 = 0;
-			else
+			else:
 				tokensToAllocate4 = 1;
 			
 		else :		
