@@ -63,8 +63,8 @@ except socket.error:
 
 startTime = time.time();
 oneSecond = 0;
-reply2_1 = "START"
-reply2_2 = "START"
+reply2_1 = "2 0 X 1 B 2 1 Y 1"
+reply2_2 = "2 0 X 1 B 2 1 Y 1"
 pps1 = 0
 pps2 = 0 
 pps3 = 0
@@ -83,10 +83,10 @@ while 1:
 		#this part finds the lowest packets per second of any level1 node
 		lowest = min(pps1, pps2, pps3, pps4);
 		
-		print "pps1: ------  " + str(pps1)		
-		print "pps2: ------  " + str(pps2)
-		print "pps3: ------  " + str(pps3)
-		print "pps4: ------  " + str(pps4)		
+		#print "pps1: ------  " + str(pps1)		
+		#print "pps2: ------  " + str(pps2)
+		#print "pps3: ------  " + str(pps3)
+		#print "pps4: ------  " + str(pps4)		
 
 
 		#this is where the number of tokens each level1 node gets are assigned
@@ -231,7 +231,7 @@ while 1:
 			pps4 = pps4 + 1;
 		
 		packetsReceived[int(datatmp[0])] = 1;  
-		if(int(datatmp[0]) > 30000) :
+		if(int(datatmp[0]) > 30100) :
 			ssend.close();
 		# send data from clients (data, addr) to layer 4
 		newdata = d[0] 
