@@ -36,10 +36,11 @@ while(1) :
 			totalTokens = int(replytmp[0]);
 			tokens[0] = int(replytmp[1]);
 			startingPkt = int(replytmp[(replytmp.index("X") + 1)])
-			currentToken = tokens[0]; 
-			msgNum = startingPkt + currentToken;
-			if currentToken == tokens[0] : 
-				tokens[0] = tokens[0] + totalTokens;
+
+		currentToken = tokens[0]; 
+		msgNum = startingPkt + currentToken;
+		if currentToken == tokens[0] : 
+			tokens[0] = tokens[0] + totalTokens;
 			#else tokens[1] = tokens[1] + totalTokens; 
 
      
