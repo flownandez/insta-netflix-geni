@@ -29,8 +29,8 @@ while(1) :
 		reply2 = reply;		
 		reply = d[0]
 		addr = d[1]
-		index = reply.index("B")
 		replytmp = reply.split()
+		index = replytmp.index("B")
 		print 'Server reply : ' + reply + ' INDEX: ' + str(index)
 		print 'Server replytmp : ' + replytmp[index + 1] + " " + replytmp[index + 2]
 	
