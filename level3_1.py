@@ -183,7 +183,7 @@ while 1:
 		if not data: 
         		break
 
-		if(addr[0] == HOSTrecv1) :
+		if(addr[0] == '10.10.5.1') :
 			reply = reply2_1;
 		else :
 			reply = reply2_2; 
