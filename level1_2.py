@@ -45,11 +45,12 @@ while(1) :
 
 		currentToken = min(tokens);
 		msgNum = startingPkt + currentToken;
-		for token in tokens :
-			if currentToken == token : 
-				token = token + totalTokens;
-				#else tokens[1] = tokens[1] + totalTokens; 
-
+		#print 'Before increment tokens[0] = ' + str(tokens[0]);
+		for i in range(0, len(tokens)) :
+			if tokens[i] == currentToken : 
+				tokens[i] = tokens[i] + totalTokens;
+		#print 'After increment tokens[0] = ' + str(tokens[0]);
+     
      
     except socket.error, msg:
         print 'Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
