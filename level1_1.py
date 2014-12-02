@@ -12,7 +12,7 @@ host = '10.10.1.2'
 port = 8887
 msg = ""
 msgNum = 0
-tokens = [0, 0]
+tokens = []
 reply = ""
 while(1) :
     msg = str(msgNum) + " 1 "
@@ -29,19 +29,24 @@ while(1) :
 		reply2 = reply;		
 		reply = d[0]
 		addr = d[1]
-		replytmp = reply.split()
 		print 'Server reply : ' + reply
-	
+		
 		if reply != reply2 :
+			replytmp = reply.split()
+			indexX = replytmp.index("X");
 			totalTokens = int(replytmp[0]);
-			tokens[0] = int(replytmp[(replytmp.index("X") - 1)]);
-			startingPkt = int(replytmp[(replytmp.index("X") + 1)])
+			tokens = [];
+			for i in range(1, indexX):
+				tokens.append(int(replytmp[i]));
+			#tokens = int(replytmp[indexX - 1]);
+			startingPkt = int(replytmp[indexX + 1])
 
-		currentToken = tokens[0]; 
+		currentToken = min(tokens);
 		msgNum = startingPkt + currentToken;
-		if currentToken == tokens[0] : 
-			tokens[0] = tokens[0] + totalTokens;
-			#else tokens[1] = tokens[1] + totalTokens; 
+		for token in tokens :
+			if currentToken == token : 
+				token = token + totalTokens;
+				#else tokens[1] = tokens[1] + totalTokens; 
 
      
     except socket.error, msg:

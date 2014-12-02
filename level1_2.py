@@ -29,21 +29,26 @@ while(1) :
 		reply2 = reply;		
 		reply = d[0]
 		addr = d[1]
-		replytmp = reply.split()
-		index = replytmp.index("B")
-		print 'Server reply : ' + reply + ' INDEX: ' + str(index)
-		print 'Server replytmp : ' + replytmp[index + 1] + " " + replytmp[index + 2]
+		#print 'Server reply : ' + reply + ' INDEX: ' + str(indexB)
+		#print 'Server replytmp : ' + replytmp[indexB + 1] + " " + replytmp[indexB + 2]
 	
 		if reply != reply2 :
-			totalTokens = int(replytmp[index + 1]);
-			tokens[0] = int(replytmp[(replytmp.index("Y") - 1)]);
-			startingPkt = int(replytmp[(replytmp.index("Y") + 1)])
+			replytmp = reply.split()
+			indexB = replytmp.index("B")
+			indexY = replytmp.index("Y")
+			totalTokens = int(replytmp[indexB + 1]);
+			tokens = [];
+			for i in range(indexB + 2, indexY):
+				tokens.append(int(replytmp[i]));
+			#tokens = int(replytmp[indexX - 1]);
+			startingPkt = int(replytmp[indexX + 1])
 
-		currentToken = tokens[0]; 
+		currentToken = min(tokens);
 		msgNum = startingPkt + currentToken;
-		if currentToken == tokens[0] : 
-			tokens[0] = tokens[0] + totalTokens;
-			#else tokens[1] = tokens[1] + totalTokens; 
+		for token in tokens :
+			if currentToken == token : 
+				token = token + totalTokens;
+				#else tokens[1] = tokens[1] + totalTokens; 
 
      
     except socket.error, msg:
