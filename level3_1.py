@@ -64,15 +64,15 @@ except socket.error:
 ############### now keep talking with the client ###############
 while 1:
 	readySockets = select.select([srecev1, srecev2], [], []);
-	for socket in readySockets:
-		d = socket.recv(1024);
+	for sock in readySockets:
+		d = sock.recvfrom(1024);
 		data = d[0]
     		addr = d[1]
 		if not data: 
         		break
 	 
 		reply = 'OK...' + data	 
-		socket.sendto(reply , addr)
+		sock.sendto(reply , addr)
 		#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 		datatmp = data.split()
 		print(datatmp[0] + " " + datatmp[1])
