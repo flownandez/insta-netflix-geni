@@ -71,11 +71,11 @@ while 1:
 		if not data: 
         		break
 		
-		if(addr == HOSTsend) :
+		if(addr[0] == HOSTsend) :
 			reply = data; 	 	
 
 		else :	 
-			print addr
+			print addr[0]
 			sock.sendto(reply , addr)
 			#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 			datatmp = data.split()
