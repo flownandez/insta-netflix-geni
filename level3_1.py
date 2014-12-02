@@ -65,7 +65,10 @@ startTime = time.time();
 oneSecond = 0;
 reply2_1 = "START"
 reply2_2 = "START"
-pps1, pps2, pps3, pps4 = 0;
+pps1 = 0
+pps2 = 0 
+pps3 = 0
+pps4 = 0
 packetsReceived = [];
 for i in range(30100) :
 	packetsReceived.append(0) ;
@@ -155,7 +158,10 @@ while 1:
 
 		reply2_1 = message1 + " " + message2;
 		reply2_2 = message3 + " " + message4;
-		pps1, pps2, pps3, pps4 = 0;
+		pps1 = 0
+		pps2 = 0 
+		pps3 = 0
+		pps4 = 0
 
 	readySockets, blank1, blank2 = select.select([srecev1, srecev2], [], []);
 	for sock in readySockets:
