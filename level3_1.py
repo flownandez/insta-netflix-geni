@@ -63,7 +63,7 @@ except socket.error:
 
 ############### now keep talking with the client ###############
 while 1:
-	readySockets = select.select([srecev1, srecev2], [], []);
+	readySockets, blank1, blank2 = select.select([srecev1, srecev2], [], []);
 	for sock in readySockets:
 		d = sock.recvfrom(1024);
 		data = d[0]
