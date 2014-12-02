@@ -32,6 +32,7 @@ while(1) :
 		#print 'Server reply : ' + reply
 		
 		if reply != reply2 :
+			print 'Server reply : ' + reply
 			replytmp = reply.split()
 			indexX = replytmp.index("X");
 			totalTokens = int(replytmp[0]);
