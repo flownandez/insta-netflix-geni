@@ -83,7 +83,7 @@ while 1:
 		#this part finds the lowest packets per second of any level1 node
 		lowest = min(pps1, pps2, pps3, pps4);
 		
-		#print "pps1: ------  " + str(pps1)		
+		print "pps1: ------  " + str(pps1)		
 		#print "pps2: ------  " + str(pps2)
 		#print "pps3: ------  " + str(pps3)
 		#print "pps4: ------  " + str(pps4)		
