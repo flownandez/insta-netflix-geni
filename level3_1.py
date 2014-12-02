@@ -70,7 +70,7 @@ pps2 = 0
 pps3 = 0
 pps4 = 0
 packetsReceived = [];
-for i in range(30100) :
+for i in range(30101) :
 	packetsReceived.append(0) ;
 
 ############### now keep talking with the client ###############

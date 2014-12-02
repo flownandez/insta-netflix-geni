@@ -56,7 +56,7 @@ while 1:
     if(int(logdata[0]) % 100) == 0 :
         print(logdata[0] + " " + logdata[1] + " " + str(transtime))
 
-    if int(logdata[0]) > 30100:
+    if int(logdata[0]) > 30000:
         file.close()
         break
 s.close()
