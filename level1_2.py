@@ -12,7 +12,7 @@ host = '10.10.2.2';
 port = 8888;
 msg = ""
 msgNum = 1
-tokens = [0, 0]
+tokens = []
 reply = ""
 while(1) :
     msg = str(msgNum) + " 2 "

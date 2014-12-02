@@ -60,24 +60,29 @@ except socket.error:
     print 'Failed to create socket'
     sys.exit()
 
+reply = "2 0 X 1 B 2 1 Y 1"  
 ############### now keep talking with the client ###############
 while 1:
-   	readySockets, blank1, blank2 = select.select([srecev1, srecev2], [], []);
+   	readySockets, blank1, blank2 = select.select([srecev1, srecev2, ssend], [], []);
 	for sock in readySockets:
 		d = sock.recvfrom(1024);
 		data = d[0]
     		addr = d[1]
 		if not data: 
         		break
-	 
-		reply = 'OK: ' + data	 
-		sock.sendto(reply , addr)
-		#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
-		datatmp = data.split()
-		print(datatmp[0] + " " + datatmp[1])
+		
+		if(addr[0] == HOSTsend) :
+			reply = data; 	 	
 
-		# send data from clients (data, addr) to layer 4
-		newdata = d[0] 
-		newaddr = (HOSTsend, PORTsend)
-		ssend.sendto(newdata , newaddr) 
+		else :	 
+			print addr[0]
+			sock.sendto(reply , addr)
+			#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
+			datatmp = data.split()
+			print(datatmp[0] + " " + datatmp[1])
+
+			# send data from clients (data, addr) to layer 4
+			newdata = d[0] 
+			newaddr = (HOSTsend, PORTsend)
+			ssend.sendto(newdata , newaddr) 
 #s.close()

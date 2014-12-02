@@ -154,8 +154,8 @@ while 1:
 		tokensAllocated4 = 0
 
 		while tokenNumber < totalTokens : #perform until all tokens are allocated
-			print "tokenNumber: " + str(tokenNumber) + " --- totalTokens: " + str(totalTokens)
-			print "tokensAllocated1: " + str(tokensAllocated1) + " --- tokensToAllocate1: " + str(tokensToAllocate1)					
+			#print "tokenNumber: " + str(tokenNumber) + " --- totalTokens: " + str(totalTokens)
+			#print "tokensAllocated1: " + str(tokensAllocated1) + " --- tokensToAllocate1: " + str(tokensToAllocate1)					
 			if(tokensAllocated1 < tokensToAllocate1):
 				if (tokenNumber < totalTokens) :
 					print "MESSAGE 1 : " + message1
