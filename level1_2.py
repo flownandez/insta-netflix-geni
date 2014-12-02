@@ -29,14 +29,14 @@ while(1) :
 		reply2 = reply;		
 		reply = d[0]
 		addr = d[1]
-		replytmp1 = reply.split('B')
-		replytmp = replytmp1[1].split()
+		index = reply.index('B')
+		replytmp = reply.split()
 		print 'Server reply : ' + reply
-		print 'Server replytmp : ' + replytmp[0] + " " + replytmp[1]
+		print 'Server replytmp : ' + replytmp[index + 1] + " " + replytmp[index + 2]
 	
 		if reply != reply2 :
-			totalTokens = int(replytmp[0]);
-			tokens[0] = int(replytmp[1]);
+			totalTokens = int(replytmp[index + 1]);
+			tokens[0] = int(replytmp[index + 2]);
 			startingPkt = int(replytmp[(replytmp.index("X") + 1)])
 
 		currentToken = tokens[0]; 
