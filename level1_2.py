@@ -31,7 +31,7 @@ while(1) :
 		addr = d[1]
 		index = reply.index("B")
 		replytmp = reply.split()
-		print 'Server reply : ' + reply + ' INDEX: ' + index
+		print 'Server reply : ' + reply + ' INDEX: ' + str(index)
 		print 'Server replytmp : ' + replytmp[index + 1] + " " + replytmp[index + 2]
 	
 		if reply != reply2 :
