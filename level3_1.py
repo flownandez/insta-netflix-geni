@@ -174,7 +174,7 @@ while 1:
 		if not data: 
         		break
 
-		if(addr == HOSTrecv1) :
+		if(addr[0] == HOSTrecv1) :
 			reply = reply2_1;
 		else :
 			reply = reply2_2; 

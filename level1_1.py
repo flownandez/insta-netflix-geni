@@ -28,7 +28,7 @@ while(1) :
         addr = d[1]
         replytmp = reply.split()
          
-        print 'Server reply : ' + replytmp[0]
+        print 'Server reply : ' + reply
         msgNum = msgNum + 4
      
     except socket.error, msg:
