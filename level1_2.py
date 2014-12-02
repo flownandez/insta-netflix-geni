@@ -15,7 +15,7 @@ msgNum = 1
 tokens = [0, 0]
 reply = ""
 while(1) :
-    msg = str(msgNum) + " 1 "
+    msg = str(msgNum) + " 2 "
     while len(msg) < 1024 :
         msg = msg + "A"
 
@@ -29,9 +29,9 @@ while(1) :
 		reply2 = reply;		
 		reply = d[0]
 		addr = d[1]
-		index = reply.index('B')
+		index = reply.index("B")
 		replytmp = reply.split()
-		print 'Server reply : ' + reply
+		print 'Server reply : ' + reply + ' INDEX: ' + index
 		print 'Server replytmp : ' + replytmp[index + 1] + " " + replytmp[index + 2]
 	
 		if reply != reply2 :
