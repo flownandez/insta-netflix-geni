@@ -60,7 +60,7 @@ except socket.error:
     print 'Failed to create socket'
     sys.exit()
 
-reply = "START START START"  
+reply = "1 1 X 1"  
 ############### now keep talking with the client ###############
 while 1:
    	readySockets, blank1, blank2 = select.select([srecev1, srecev2, ssend], [], []);
