@@ -65,7 +65,7 @@ except socket.error:
 while 1:
 	readySockets = select.select([srecev1, srecev2], [], []);
 	for socket in readySockets:
-		d = socket.recvfrom(1024);
+		d = socket.recv(1024);
 		data = d[0]
     		addr = d[1]
 		if not data: 
