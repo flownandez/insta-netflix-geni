@@ -76,7 +76,7 @@ for i in range(30101) :
 ############### now keep talking with the client ###############
 while 1:
 	newTime = time.time();
-	if((newTime - startTime) >= 1) : 
+	if((newTime - startTime) >= 5) : 
 		startTime = time.time();
 		oneSecond = 1;
 		
@@ -84,9 +84,9 @@ while 1:
 		lowest = min(pps1, pps2, pps3, pps4);
 		
 		print "pps1: ------  " + str(pps1)		
-		#print "pps2: ------  " + str(pps2)
-		#print "pps3: ------  " + str(pps3)
-		#print "pps4: ------  " + str(pps4)		
+		print "pps2: ------  " + str(pps2)
+		print "pps3: ------  " + str(pps3)
+		print "pps4: ------  " + str(pps4)		
 
 
 		#this is where the number of tokens each level1 node gets are assigned
