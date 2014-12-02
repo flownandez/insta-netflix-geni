@@ -32,7 +32,7 @@ while(1) :
 		replytmp1 = reply.split('B')
 		replytmp = replytmp1[1].split()
 		print 'Server reply : ' + reply
-		print 'Server replytmp : ' + replytmp
+		print 'Server replytmp : ' + replytmp[0] + " " + replytmp[1]
 	
 		if reply != reply2 :
 			totalTokens = int(replytmp[0]);
