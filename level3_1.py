@@ -123,7 +123,10 @@ while 1:
 		message4 = "" + str(totalTokens);
 
 		#these variables will keep track of how many tokens each node has been assigned
-		tokensAllocated1, tokensAllocated2, tokensAllocated3, tokensAllocated4 = 0;
+		tokensAllocated1 = 0
+		tokensAllocated2 = 0
+		tokensAllocated3 = 0
+		tokensAllocated4 = 0
 
 		while tokenNumber < totalTokens : #perform until all tokens are allocated
 			if(tokensAllocated1 < tokensToAllocate1):
