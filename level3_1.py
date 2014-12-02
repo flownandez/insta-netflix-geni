@@ -135,6 +135,7 @@ while 1:
 		tokensAllocated4 = 0
 
 		while tokenNumber < totalTokens : #perform until all tokens are allocated
+			print "tokenNumber: " + str(tokenNumber) + " --- totalTokens: " + str(totalTokens)			
 			if(tokensAllocated1 < tokensToAllocate1):
 				if (tokenNumber < totalTokens) :
 					message1 = message1 + " " + str(tokenNumber); #allocate token by adding token number to message
