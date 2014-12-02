@@ -13,7 +13,7 @@ port = 8887
 msg = ""
 msgNum = 0
 tokens = [0, 0]
-
+reply = ""
 while(1) :
     msg = str(msgNum) + " 1 "
     while len(msg) < 1024 :
