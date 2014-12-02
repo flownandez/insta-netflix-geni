@@ -117,10 +117,10 @@ while 1:
 
 		#this is where we assign the tokens to each node
 		tokenNumber = 0; #first token to assign will be 0
-		message1 = "" + totalTokens; #first part of messages will be total number of tokens
-		message2 = "" + totalTokens;
-		message3 = "" + totalTokens;
-		message4 = "" + totalTokens;
+		message1 = "" + str(totalTokens); #first part of messages will be total number of tokens
+		message2 = "" + str(totalTokens);
+		message3 = "" + str(totalTokens);
+		message4 = "" + str(totalTokens);
 
 		#these variables will keep track of how many tokens each node has been assigned
 		tokensAllocated1, tokensAllocated2, tokensAllocated3, tokensAllocated4 = 0;
@@ -151,10 +151,10 @@ while 1:
 					tokensAllocated4 = tokensAllocated4 + 1;
 
 		startingPkt = packetsReceived.index(0); 
-		message1 = message1 + " X " + startingPkt; #message format will be "totalTokens tokens[..] X startingPkt"
-		message2 = message2 + " X " + startingPkt;
-		message3 = message3 + " X " + startingPkt;
-		message4 = message4 + " X " + startingPkt;
+		message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
+		message2 = message2 + " X " + str(startingPkt);
+		message3 = message3 + " X " + str(startingPkt);
+		message4 = message4 + " X " + str(startingPkt);
 
 		reply2_1 = message1 + " " + message2;
 		reply2_2 = message3 + " " + message4;
