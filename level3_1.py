@@ -95,7 +95,7 @@ while 1:
 		elif(pps1 < (lowest + 5)) :
 			tokensToAllocate1 = 1;	 #if pps1 is close to lowest, give it 1 token
 		else :
-			tokensToAllocate = 1;  			
+			tokensToAllocate1 = 1;  			
 			#tokensToAllocate1 = int((pps1 + 5) / (lowest + 1));  #else give it tokens proportional to its pps compared to lowest
 		                                           				# can hardcode to 2 if issues
 
@@ -104,7 +104,8 @@ while 1:
 		elif(pps2 < (lowest + 5)):
 			tokensToAllocate2 = 1; #do the same for all nodes
 		else :
-			tokensToAllocate2 = int((pps2 + 5) / (lowest + 1)); 
+			tokensToAllocate2 = 1
+			#tokensToAllocate2 = int((pps2 + 5) / (lowest + 1)); 
 
 		if(pps3 == 0):
 			tokensToAllocate3 = 0; 	
@@ -169,8 +170,8 @@ while 1:
 		message3 = message3 + " X " + str(startingPkt);
 		message4 = message4 + " X " + str(startingPkt);
 
-		reply2_1 = message1 + " " + message2;
-		reply2_2 = message3 + " " + message4;
+		reply2_1 = message1 + " B " + message2;
+		reply2_2 = message3 + " B " + message4;
 		pps1 = 0
 		pps2 = 0 
 		pps3 = 0

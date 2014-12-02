@@ -11,24 +11,40 @@ except socket.error:
 host = '10.10.2.2';
 port = 8888;
 msg = ""
-msgNum = 2
-
+msgNum = 1
+tokens = [0, 0]
+reply = ""
 while(1) :
-    msg = str(msgNum) + " 2 "
+    msg = str(msgNum) + " 1 "
     while len(msg) < 1024 :
         msg = msg + "A"
 
     try :
-        #Set the whole string
-        s.sendto(str(msg), (host, port))
-         
-        # receive data from client (data, addr)
-        d = s.recvfrom(1024)
-        reply = d[0]
-        replytmp = reply.split()
-         
-        print 'Server reply : ' + replytmp[0]
-        msgNum = msgNum + 4
+		#Set the whole string
+		s.sendto(str(msg), (host, port))
+		
+		# receive data from client (data, addr)
+		d = s.recvfrom(1024)
+		
+		reply2 = reply;		
+		reply = d[0]
+		addr = d[1]
+		replytmp1 = reply.split('B')
+		replytmp = replytmp1[1].split()
+		print 'Server reply : ' + reply
+		print 'Server replytmp : ' + replytmp
+	
+		if reply != reply2 :
+			totalTokens = int(replytmp[0]);
+			tokens[0] = int(replytmp[1]);
+			startingPkt = int(replytmp[(replytmp.index("X") + 1)])
+
+		currentToken = tokens[0]; 
+		msgNum = startingPkt + currentToken;
+		if currentToken == tokens[0] : 
+			tokens[0] = tokens[0] + totalTokens;
+			#else tokens[1] = tokens[1] + totalTokens; 
+
      
     except socket.error, msg:
         print 'Error Code : ' + str(msg[0]) + ' Message ' + msg[1]
