@@ -14,7 +14,7 @@ msg = ""
 msgNum = 0
 
 while(1) :
-    msg = str(msgNum) + " "
+    msg = str(msgNum) + " 1 "
     while len(msg) < 1024 :
         msg = msg + "A"
 

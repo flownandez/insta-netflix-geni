@@ -59,6 +59,7 @@ message4 = "" + totalTokens;
 tokensAllocated1, tokensAllocated2, tokensAllocated3, tokensAllocated4 = 0;
 
 while(tokenNumber < totalTokens) #perform until all tokens are allocated
+
 {
 	if(tokensAllocated1 < tokensToAllocate1 && tokenNumber < totalTokens)
 	{
