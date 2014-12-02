@@ -75,11 +75,11 @@ while 1:
 			reply = data; 	 	
 
 		else :	 
-			print addr[0]
+			#print addr[0]
 			sock.sendto(reply , addr)
 			#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 			datatmp = data.split()
-			print(datatmp[0] + " " + datatmp[1])
+			#print(datatmp[0] + " " + datatmp[1])
 
 			# send data from clients (data, addr) to layer 4
 			newdata = d[0] 
