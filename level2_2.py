@@ -70,7 +70,7 @@ while 1:
 		if not data: 
         		break
 	 
-		reply = 'OK...' + data	 
+		reply = 'OK: ' + data	 
 		sock.sendto(reply , addr)
 		#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 		datatmp = data.split()

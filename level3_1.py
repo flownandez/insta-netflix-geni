@@ -61,8 +61,82 @@ except socket.error:
     print 'Failed to create socket'
     sys.exit()
 
+startTime = time.time();
+pps1, pps2, pps3, pps4 = 0;
 ############### now keep talking with the client ###############
 while 1:
+	newTime = time.time();
+	if((newTime - startTime) >= 1) : 
+		startTime = time.time();
+	
+		#this part finds the lowest packets per second of any level1 node
+		lowest = min(pps1, pps2, pps3, pps4);
+
+		#this is where the number of tokens each level1 node gets are assigned
+		if(pps1 < (lowest + 5)) tokensToAllocate1 = 1;	 #if pps1 is close to lowest, give it 1 token
+		else tokensToAllocate1 = int((pps1 + 5) / lowest);  #else give it tokens proportional to its pps compared to lowest
+		                                           # can hardcode to 2 if issues
+
+		if(pps2 < (lowest + 5)) tokensToAllocate2 = 1; #do the same for all nodes
+		else tokensToAllocate2 = int((pps2 + 5) / lowest); 
+
+		if(pps3 < (lowest + 5)) tokensToAllocate3 = 1;
+		else tokensToAllocate3 = int((pps3 + 5) / lowest);
+
+		if(pps4 < (lowest + 5)) tokensToAllocate4 = 1;
+		else tokensToAllocate4 = int((pps4 + 5) / lowest);
+
+		totalTokens = tokensToAllocate1 + tokensToAllocate2 + tokensToAllocate3 + tokensToAllocate4;
+
+		#this is where we assign the tokens to each node
+		tokenNumber = 0; #first token to assign will be 0
+		message1 = "" + totalTokens; #first part of messages will be total number of tokens
+		message2 = "" + totalTokens;
+		message3 = "" + totalTokens;
+		message4 = "" + totalTokens;
+
+		#these variables will keep track of how many tokens each node has been assigned
+		tokensAllocated1, tokensAllocated2, tokensAllocated3, tokensAllocated4 = 0;
+
+		while(tokenNumber < totalTokens) #perform until all tokens are allocated
+		{
+			if(tokensAllocated1 < tokensToAllocate1 && tokenNumber < totalTokens)
+			{
+				message1 = message1 + " " + tokenNumber; #allocate token by adding token number to message
+				tokenNumber = tokenNumber + 1; #increment token number
+				tokensAllocated1 = tokensAllocated1 + 1; #node 1 has been assigned 1 more token
+			}
+
+			if(tokensAllocated2 < tokensToAllocate2 && tokenNumber < totalTokens)
+			{
+				message2 = message2 + " " + tokenNumber;
+				tokenNumber = tokenNumber + 1; #increment token number
+				tokensAllocated2 = tokensAllocated2 + 1;
+			}
+
+			if(tokensAllocated3 < tokensToAllocate3 && tokenNumber < totalTokens)
+			{
+				message3 = message3 + " " + tokenNumber;
+				tokenNumber = tokenNumber + 1; #increment token number
+				tokensAllocated3 = tokensAllocated3 + 1;
+			}
+
+			if(tokensAllocated4 < tokensToAllocate4 && tokenNumber < totalTokens)
+			{
+				message4 = message4 + " " + tokenNumber;
+				tokenNumber = tokenNumber + 1; #increment token number
+				tokensAllocated4 = tokensAllocated4 + 1;
+			}
+		}
+
+		message1 = message1 + " X " + startingPkt; #message format will be "totalTokens tokens[..] X startingPkt"
+		message2 = message2 + " X " + startingPkt;
+		message3 = message3 + " X " + startingPkt;
+		message4 = message4 + " X " + startingPkt;
+
+		reply2_1 = message1 + " " + message2;
+		reply2_2 = message3 + " " + message4;
+
 	readySockets, blank1, blank2 = select.select([srecev1, srecev2], [], []);
 	for sock in readySockets:
 		d = sock.recvfrom(1024);
@@ -71,11 +145,19 @@ while 1:
 		if not data: 
         		break
 	 
-		reply = 'OK...' + data	 
+		reply = 'OK: ' + data	 
 		sock.sendto(reply , addr)
 		#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 		datatmp = data.split()
 		print(datatmp[0] + " " + datatmp[1])
+		if(int(datatmp[1]) == 1) :
+			pps1 = pps1 + 1;
+		if(int(datatmp[1]) == 2) :
+			pps2 = pps2 + 1;
+		if(int(datatmp[1]) == 3) :
+			pps3 = pps3 + 1;
+		if(int(datatmp[1]) == 4) :
+			pps4 = pps4 + 1;
 
 		# send data from clients (data, addr) to layer 4
 		newdata = d[0] 
