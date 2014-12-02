@@ -53,7 +53,7 @@ while 1:
     #print 'Message[' + addr[0] + ':' + str(addr[1]) + '] - ' + data.strip()
     #print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
     #datatmp = data.split()
-    print(logdata[0])
+    print(logdata[0] + " " + logdata[1])
 
     if transtime > 30:
         file.close()

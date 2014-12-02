@@ -74,7 +74,7 @@ while 1:
     srecev1.sendto(reply1 , addr1)
     #print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
     datatmp = data1.split()
-    print(datatmp[0])
+    print(datatmp[0] + " " + datatmp[1])
 
     # send data from clients (data, addr) to layer 4
     newdata = d1[0] 
@@ -94,7 +94,7 @@ while 1:
     srecev2.sendto(reply2 , addr2)
     #print 'Message[' + addr2[0] + ':' + str(addr2[1]) + '] - ' + data2.strip()
     datatmp = data2.split()
-    print(datatmp[0])
+    print(datatmp[0] + " " + datatmp[1])
 
     # send data from clients (data, addr) to layer 4
     newdata = d2[0] 
