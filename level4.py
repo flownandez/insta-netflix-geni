@@ -25,7 +25,7 @@ print 'Socket bind complete'
  
 firstround = 1
 transtime = 0
-file = open("iperfResults.txt", "w")
+file = open("ScenarioB_Level1_1_to_Level2_1.txt", "w")
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)
