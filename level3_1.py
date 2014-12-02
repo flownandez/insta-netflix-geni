@@ -76,7 +76,7 @@ for i in range(30101) :
 ############### now keep talking with the client ###############
 while 1:
 	newTime = time.time();
-	if((newTime - startTime) >= 1) : 
+	if((newTime - startTime) >= 10) : 
 		startTime = time.time();
 		oneSecond = 1;
 		
