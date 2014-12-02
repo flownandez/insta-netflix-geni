@@ -114,7 +114,7 @@ while 1:
 			elif(pps1 < (lowest + 5)) :
 				tokensToAllocate1 = 1;	 #if pps1 is close to lowest, give it 1 token
 			else : 			
-				tokensToAllocate1 = int((pps1 + 5) / (lowest + 1));  #else give it tokens proportional to its pps compared to lowest
+				tokensToAllocate1 = int((pps1 + 5) / lowest);  #else give it tokens proportional to its pps compared to lowest
 				                                   				# can hardcode to 2 if issues
 
 			if(pps2 == 0) :
@@ -122,21 +122,21 @@ while 1:
 			elif(pps2 < (lowest + 5)):
 				tokensToAllocate2 = 1; #do the same for all nodes
 			else :
-				tokensToAllocate2 = int((pps2 + 5) / (lowest + 1)); 
+				tokensToAllocate2 = int((pps2 + 5) / lowest); 
 
 			if(pps3 == 0):
 				tokensToAllocate3 = 0; 	
 			elif(pps3 < (lowest + 5)):
 				tokensToAllocate3 = 1;
 			else:
-				tokensToAllocate3 = int((pps3 + 5) / (lowest + 1));
+				tokensToAllocate3 = int((pps3 + 5) / lowest);
 
 			if(pps4 == 0):
 				tokensToAllocate4 = 0; 	
 			elif(pps4 < (lowest + 5)):
 				tokensToAllocate4 = 1;
 			else:
-				tokensToAllocate4 = int((pps4 + 5) / (lowest + 1));
+				tokensToAllocate4 = int((pps4 + 5) / lowest);
 
 		totalTokens = tokensToAllocate1 + tokensToAllocate2 + tokensToAllocate3 + tokensToAllocate4;
 
@@ -232,7 +232,9 @@ while 1:
 		
 		packetsReceived[int(datatmp[0])] = 1;  
 		if(int(datatmp[0]) > 30100) :
-			ssend.close();
+			srecev1.close();
+			srecev2.close();
+			break;
 		# send data from clients (data, addr) to layer 4
 		newdata = d[0] 
 		newaddr = (HOSTsend, PORTsend)
