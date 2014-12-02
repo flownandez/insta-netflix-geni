@@ -61,43 +61,22 @@ except socket.error:
 
 ############### now keep talking with the client ###############
 while 1:
-    # receive data from client (data, addr)
-    d1 = srecev1.recvfrom(1024)
-    data1 = d1[0]
-    addr1 = d1[1]
-     
-    if not data1: 
-        break
-     
-    reply1 = 'OK...' + data1
-     
-    srecev1.sendto(reply1 , addr1)
-    #print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
-    datatmp = data1.split()
-    print(datatmp[0] + " " + datatmp[1])
+   	readySockets, blank1, blank2 = select.select([srecev1, srecev2], [], []);
+	for sock in readySockets:
+		d = sock.recvfrom(1024);
+		data = d[0]
+    		addr = d[1]
+		if not data: 
+        		break
+	 
+		reply = 'OK...' + data	 
+		sock.sendto(reply , addr)
+		#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
+		datatmp = data.split()
+		print(datatmp[0] + " " + datatmp[1])
 
-    # send data from clients (data, addr) to layer 3
-    newdata = d1[0] 
-    newaddr = (HOSTsend, PORTsend)
-    ssend.sendto(newdata , newaddr) 
-
-    # receive data from client (data, addr)
-    d2 = srecev2.recvfrom(1024)
-    data2 = d2[0]
-    addr2 = d2[1]
-     
-    if not data2: 
-        break
-     
-    reply2 = 'OK...' + data2
-     
-    srecev2.sendto(reply2 , addr2)
-    #print 'Message[' + addr2[0] + ':' + str(addr2[1]) + '] - ' + data2.strip()
-    datatmp = data2.split()
-    print(datatmp[0] + " " + datatmp[1])
-
-    # send data from clients (data, addr) to layer 3
-    newdata = d2[0] 
-    newaddr = (HOSTsend, PORTsend)
-    ssend.sendto(newdata , newaddr) 
+		# send data from clients (data, addr) to layer 4
+		newdata = d[0] 
+		newaddr = (HOSTsend, PORTsend)
+		ssend.sendto(newdata , newaddr) 
 #s.close()
