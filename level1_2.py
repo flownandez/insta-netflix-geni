@@ -36,8 +36,8 @@ while(1) :
 	
 		if reply != reply2 :
 			totalTokens = int(replytmp[index + 1]);
-			tokens[0] = int(replytmp[index + 2]);
-			startingPkt = int(replytmp[(replytmp.index("X") + 1)])
+			tokens[0] = int(replytmp[(replytmp.index("Y") - 1]);
+			startingPkt = int(replytmp[(replytmp.index("Y") + 1)])
 
 		currentToken = tokens[0]; 
 		msgNum = startingPkt + currentToken;

@@ -163,12 +163,21 @@ while 1:
 					message4 = message4 + " " + str(tokenNumber);
 					tokenNumber = tokenNumber + 1; #increment token number
 					tokensAllocated4 = tokensAllocated4 + 1;
-
+				
 		startingPkt = packetsReceived.index(0); 
+		
+		if (tokensAllocated1 == 0):
+			message1 = message1 + " 0";
+		if (tokensAllocated2 == 0):
+			message2 = message2 + " 0";
+		if (tokensAllocated1 == 0):
+			message3 = message3 + " 0";
+		if (tokensAllocated1 == 0):
+			message4 = message4 + " 0";
 		message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
-		message2 = message2 + " X " + str(startingPkt);
+		message2 = message2 + " Y " + str(startingPkt);
 		message3 = message3 + " X " + str(startingPkt);
-		message4 = message4 + " X " + str(startingPkt);
+		message4 = message4 + " Y " + str(startingPkt);
 
 		reply2_1 = message1 + " B " + message2;
 		reply2_2 = message3 + " B " + message4;
