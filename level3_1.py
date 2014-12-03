@@ -115,7 +115,7 @@ while 1:
 		else :		
 			if(pps1 == 0): 
 				tokensToAllocate1 = 0; 		
-			elif(pps1 < (lowest + 5)) :
+			elif(pps1 < 27) :
 				tokensToAllocate1 = 0;	 #if pps1 is close to lowest, give it 1 token
 			else : 			
 				tokensToAllocate1 = 1;#int((pps1 + 12) / lowest);  #else give it tokens proportional to its pps compared to lowest
@@ -123,21 +123,21 @@ while 1:
 
 			if(pps2 == 0) :
 				tokensToAllocate2 = 0;	
-			elif(pps2 < (lowest + 5)):
+			elif(pps2 < 27):
 				tokensToAllocate2 = 0; #do the same for all nodes
 			else :
 				tokensToAllocate2 = 1;#int((pps2 + 12) / lowest); 
 
 			if(pps3 == 0):
 				tokensToAllocate3 = 0; 	
-			elif(pps3 < (lowest + 5)):
+			elif(pps3 < 27):
 				tokensToAllocate3 = 0;
 			else:
 				tokensToAllocate3 = 1;#int((pps3 + 12) / lowest);
 
 			if(pps4 == 0):
 				tokensToAllocate4 = 0; 	
-			elif(pps4 < (lowest + 5)):
+			elif(pps4 < 27):
 				tokensToAllocate4 = 0;
 			else:
 				tokensToAllocate4 = 1;#int((pps4 + 12) / lowest);
