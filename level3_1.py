@@ -196,6 +196,16 @@ while 1:
 		
 		if previousMessages == [message1, message2, message3, message4] :
 			previousMessages = [message1, message2, message3, message4];
+			if(newDataPkt > (startingPkt - 100)) :
+				print 'New Message'
+				previousMessages = [message1, message2, message3, message4];
+				message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
+				message2 = message2 + " Y " + str(startingPkt);
+				message3 = message3 + " X " + str(startingPkt);
+				message4 = message4 + " Y " + str(startingPkt);
+				reply2_1 = message1 + " B " + message2;
+				reply2_2 = message3 + " B " + message4;
+			 
 		else :
 			print 'New Message'
 			previousMessages = [message1, message2, message3, message4];
