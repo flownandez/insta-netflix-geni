@@ -196,7 +196,7 @@ while 1:
 		
 		if previousMessages == [message1, message2, message3, message4] :
 			previousMessages = [message1, message2, message3, message4];
-			if(newDataPkt > (startingPkt - 100)) :
+			if(newDataPkt > (startingPkt + 100)) :
 				print 'New Message'
 				previousMessages = [message1, message2, message3, message4];
 				message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
