@@ -115,32 +115,32 @@ while 1:
 		else :		
 			if(pps1 == 0): 
 				tokensToAllocate1 = 0; 		
-			elif(pps1 < 27) :
-				tokensToAllocate1 = 0;	 #if pps1 is close to lowest, give it 1 token
+			elif(pps1 < (lowest + 5)) :
+				tokensToAllocate1 = 1;	 #if pps1 is close to lowest, give it 1 token
 			else : 			
-				tokensToAllocate1 = 1;#int((pps1 + 12) / lowest);  #else give it tokens proportional to its pps compared to lowest
+				tokensToAllocate1 = int(pps1 / lowest);  #else give it tokens proportional to its pps compared to lowest
 				                                   				# can hardcode to 2 if issues
 
 			if(pps2 == 0) :
 				tokensToAllocate2 = 0;	
-			elif(pps2 < 27):
-				tokensToAllocate2 = 0; #do the same for all nodes
+			elif(pps2 < (lowest + 5)):
+				tokensToAllocate2 = 1; #do the same for all nodes
 			else :
-				tokensToAllocate2 = 1;#int((pps2 + 12) / lowest); 
+				tokensToAllocate2 = int(pps2 / lowest); 
 
 			if(pps3 == 0):
 				tokensToAllocate3 = 0; 	
-			elif(pps3 < 27):
-				tokensToAllocate3 = 0;
+			elif(pps3 < (lowest + 5)):
+				tokensToAllocate3 = 1;
 			else:
-				tokensToAllocate3 = 1;#int((pps3 + 12) / lowest);
+				tokensToAllocate3 = int(pps3 / lowest);
 
 			if(pps4 == 0):
 				tokensToAllocate4 = 0; 	
-			elif(pps4 < 27):
-				tokensToAllocate4 = 0;
+			elif(pps4 < (lowest + 5)):
+				tokensToAllocate4 = 1;
 			else:
-				tokensToAllocate4 = 1;#int((pps4 + 12) / lowest);
+				tokensToAllocate4 = int(pps4 / lowest);
 
 		totalTokens = tokensToAllocate1 + tokensToAllocate2 + tokensToAllocate3 + tokensToAllocate4;
 		if (totalTokens == 0) :
@@ -258,7 +258,7 @@ while 1:
 			pps4 = pps4 + 1;
 		
 		packetsReceived[int(datatmp[0])] = 1; 	
-		if(int(datatmp[0]) > 30100) :
+		if(int(datatmp[0]) > 30100) : 	#stop after 30000 packets
 			srecev1.close();
 			srecev2.close();
 			break;
