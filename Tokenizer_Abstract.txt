@@ -38,7 +38,7 @@ Calculating Which Packets to Send
         3. Repeat steps 1 through 3 until a new command is received.
 
 
-Analysis of BetaMax and R-Values
+Analysis of BetaMax (wait time) and R-Values (stream rate in frames/second)
 
         Within each of the given scenarios our results stayed fairly consistent. Below we describe which R-Values (frames per second) and corresponding BetaMax (waiting time) values we thought were the best for each scenario using our Tokenizer scheme. 
 
