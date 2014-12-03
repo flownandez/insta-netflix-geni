@@ -83,9 +83,13 @@ while 1:
 		prevTime = time.time();
 		oneSecond = 1;
 		timeElapsed = newTime - startTime;
-		if(timeElapsed >= 30) :
-			if(timeElapsed < 60) :
-				pps1 = pps1 / 2;			
+		if(timeElapsed >= 60) :
+			if(timeElapsed < 240) :
+				pps1 = pps1 / 2;
+				pps2 = pps2 / 2;
+				pps3 = pps3 / 2;
+				pps4 = pps4 / 2;
+							
 		
 		#this part finds the lowest packets per second of any level1 node
 		lowest = min(pps1, pps2, pps3, pps4);
@@ -255,6 +259,8 @@ while 1:
 			pps4 = pps4 + 1;
 		
 		packetsReceived[int(datatmp[0])] = 1;  
+		if newDataPkt == 1 :
+			startTime = time.time();	
 		if(int(datatmp[0]) > 30100) :
 			srecev1.close();
 			srecev2.close();
