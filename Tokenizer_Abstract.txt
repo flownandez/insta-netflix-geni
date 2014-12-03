@@ -3,13 +3,13 @@ Authors: Insta-GENI Netflix Team (Chris Fernandez and Nick Levin)
 
 Overview
 
-        The idea behind the tokenizer scheme we developed is straightforward in thought but fairly complex in implementation. We began with one goal in mind: How do we eek out the most packets (frames) per second in networks where connection speeds are frequently changing? This may sound similar to a problem that TCP has already solved. However, the token scheme the Insta-GENI Netflix Team developed differs from traditional window-based protocols, and instead relies on three core principles:
+    The idea behind the tokenizer scheme we developed is straightforward in thought but fairly complex in implementation. We began with one goal in mind: How do we eek out the most packets (frames) per second in networks where connection speeds are frequently changing? This may sound similar to a problem that TCP has already solved. However, the token scheme the Insta-GENI Netflix Team developed differs from traditional window-based protocols, and instead relies on three core principles:
 
         1. The receiver (Level 3 and 4 Nodes), not the sender, are the ones measuring throughput and making decisions on what to send.
         2. The senders (Level 1 Nodes) are constantly sending packets down the line as fast as possible.
         3. Connections between nodes change frequently, but once changed hold a constant rate for a length longer than the time window (discussed below).
 
-        To accomplish the principles stated above, the token scheme works as follows:
+    To accomplish the principles stated above, the token scheme works as follows:
 
         1. The receiver constantly measures how many frames it has received from each node in an adjustable time window (we tested with 1, 3, 5, and 10 seconds).
         2. An algorithm is run that measures each node's ratio of frames sent compared to the total number of frames sent in that time window.
@@ -18,38 +18,38 @@ Overview
 
 Choosing the Proper Time Window
 
-        We tested a variety of time window values, and finding the right one eventually came down to a tradeoff between quickness to adjust and redundancy. The shorter the time window, the more adapability the system has to changing connection speeds. However, due to the nature of the tokens, which need to be sent prior to the next time window, thereby involving a degree of prediction on what the connection speeds will be in the following time window, a lower time window also meant resending packets when wrong predictions were made.  When running through the various scenarios involving iperf we found that connection speeds did vary rapidly. After testing with windows of 1, 3, 5, and 10 seconds and finding that neither did quite as well as we had hoped, we decided to implement a hybrid scheme. The hybrid scheme checks once per second for changing connection speeds and if it has changed enough it sends a new command to the nodes, otherwise it waits until 10 seconds have passed to send a new command. In this way we were able to get the quick adapting characteristic of a short time window while also not having to resend packets very frequently.
+    We tested a variety of time window values, and finding the right one eventually came down to a tradeoff between quickness to adjust and redundancy. The shorter the time window, the more adapability the system has to changing connection speeds. However, due to the nature of the tokens, which need to be sent prior to the next time window, thereby involving a degree of prediction on what the connection speeds will be in the following time window, a lower time window also meant resending packets when wrong predictions were made.  When running through the various scenarios involving iperf we found that connection speeds did vary rapidly. After testing with windows of 1, 3, 5, and 10 seconds and finding that neither did quite as well as we had hoped, we decided to implement a hybrid scheme. The hybrid scheme checks once per second for changing connection speeds and if it has changed enough it sends a new command to the nodes, otherwise it waits until 10 seconds have passed to send a new command. In this way we were able to get the quick adapting characteristic of a short time window while also not having to resend packets very frequently.
 
 Token Algorithm
         
-        The algorithm can be broken down into the following steps:
-        1. Find the node that has the slowest connection (lowest number of frames received in time window) and give it 1 token.
-        2. For every node that is near the slowest nodes speed also give it 1 token.
-        3. For the faster nodes, give it tokens proportional to how many frames they sent in time window compared to the slowest node.
-        4. Once tokens have been allocated, give each token a unique identifier.
-        5. Send each node a command containing the total number of tokens, that node's tokens, and the packet at which to start sending.
+    The algorithm can be broken down into the following steps:
+    1. Find the node that has the slowest connection (lowest number of frames received in time window) and give it 1 token.
+    2. For every node that is near the slowest nodes speed also give it 1 token.
+    3. For the faster nodes, give it tokens proportional to how many frames they sent in time window compared to the slowest node.
+    4. Once tokens have been allocated, give each token a unique identifier.
+    5. Send each node a command containing the total number of tokens, that node's tokens, and the packet at which to start sending.
 
 Calculating Which Packets to Send
         
-        After receiving its individual command, each node needs to figure out what packets it is responsible for sending in that time window. It does this as follows:
-        1. Take lowest token number and add it to the starting packet number, this is the packet (frame) to send.
-        2. Send that packet (frame).
-        2. Increment that token number by the total number of tokens. The node's next token (if it has one) will now be the lowest token number.
-        3. Repeat steps 1 through 3 until a new command is received.
+    After receiving its individual command, each node needs to figure out what packets it is responsible for sending in that time window. It does this as follows:
+    1. Take lowest token number and add it to the starting packet number, this is the packet (frame) to send.
+    2. Send that packet (frame).
+    2. Increment that token number by the total number of tokens. The node's next token (if it has one) will now be the lowest token number.
+    3. Repeat steps 1 through 3 until a new command is received.
 
 
 Analysis of BetaMax (wait time) and R-Values (stream rate in frames/second)
 
-        Within each of the given scenarios our results stayed fairly consistent. Below we describe which R-Values (frames per second) and corresponding BetaMax (waiting time) values we thought were the best for each scenario using our Tokenizer scheme. 
+    Within each of the given scenarios our results stayed fairly consistent. Below we describe which R-Values (frames per second) and corresponding BetaMax (waiting time) values we thought were the best for each scenario using our Tokenizer scheme. 
 
-        Scenario A, constant speed throughout
-                In Scenario A we were able to maintain a frames/second transmission of over 100 for the entirety of the simulation. As a result we choose the R-Value of 100 frames/second and its corresponding BetaMax value of 0 seconds waiting time.                 
+    Scenario A, constant speed throughout
+        In Scenario A we were able to maintain a frames/second transmission of over 100 for the entirety of the simulation. As a result we choose the R-Value of 100 frames/second and its corresponding BetaMax value of 0 seconds waiting time.                 
                 
-        Scenario B, congestion on one link
-                After plotting our frames/time graph and running extensive mathematical analysis we concluded that an R-Value of 70 frames/second would be the best option to guarentee quality of service while providing a minimal BetaMax value. For nearly all connections (except for one outlier) 70 frames/second could be achieved with only a 16 second wait time, and for 6 of the 8 simulations with less than a 6 second wait time. For that outlier, we would choose an R-Value of 60 frames/second and not have any waiting time. For all our simulations 60 frames/second could be achieved with no waiting time. 
+    Scenario B, congestion on one link
+        After plotting our frames/time graph and running extensive mathematical analysis we concluded that an R-Value of 70 frames/second would be the best option to guarentee quality of service while providing a minimal BetaMax value. For nearly all connections (except for one outlier) 70 frames/second could be achieved with only a 16 second wait time, and for 6 of the 8 simulations with less than a 6 second wait time. For that outlier, we would choose an R-Value of 60 frames/second and not have any waiting time. For all our simulations 60 frames/second could be achieved with no waiting time. 
 
-        Scenario C, congestion on two links non-simultaneously
-                In Scenario C, we found that by having a slightly longer waiting time than in Scenario B we were able to increase the R-Value much higher. For all of the Scenario C simulations we choose an R-Value of 80 frames/second, which all have a BetaMax value of under 40 seconds and a mean of approximately 30 seconds. 
+    Scenario C, congestion on two links non-simultaneously
+        In Scenario C, we found that by having a slightly longer waiting time than in Scenario B we were able to increase the R-Value much higher. For all of the Scenario C simulations we choose an R-Value of 80 frames/second, which all have a BetaMax value of under 40 seconds and a mean of approximately 30 seconds. 
 
-        Scenario D, congestion on two links simultaneously 
-                Much like for Scenario B, we found that a 70 frames/second R-Value provided minimal waiting time, in most cases a BetaMax value of 0 seconds. In our experience with applications like video streaming the waiting time to begin watching is critical to the experience, moreso than quality of the stream. In addition, given more advanced options, we could choose to begin streaming at a low frames/second value and as we buffer enough frames or congestion clears we could enhance the frames/second dynamically. This is an important caveat that video streaming services like Netflix currently use to enhance the video watching experience. 
+    Scenario D, congestion on two links simultaneously 
+        Much like for Scenario B, we found that a 70 frames/second R-Value provided minimal waiting time, in most cases a BetaMax value of 0 seconds. In our experience with applications like video streaming the waiting time to begin watching is critical to the experience, moreso than quality of the stream. In addition, given more advanced options, we could choose to begin streaming at a low frames/second value and as we buffer enough frames or congestion clears we could enhance the frames/second dynamically. This is an important caveat that video streaming services like Netflix currently use to enhance the video watching experience. 
