@@ -25,7 +25,7 @@ print 'Socket bind complete'
  
 firstround = 1
 transtime = 0
-file = open("ScenarioB_Level3_to_Level4.txt", "w")
+file = open("ScenarioC_Level1_1_Level2_1.txt", "w")
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)
@@ -56,7 +56,7 @@ while 1:
     if(int(logdata[0]) % 100) == 0 :
         print(logdata[0] + " " + logdata[1] + " " + str(transtime))
 
-    if int(logdata[0]) > 30000:
+    if int(logdata[0]) > 30100:
         file.close()
         break
 s.close()

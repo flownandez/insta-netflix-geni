@@ -79,18 +79,10 @@ for i in range(30101) :
 ############### now keep talking with the client ###############
 while 1:
 	newTime = time.time();
-	if((newTime - prevTime) >= 5) : 
+	if((newTime - prevTime) >= 1) : 
 		prevTime = time.time();
 		oneSecond = 1;
-		timeElapsed = newTime - startTime;
-		if(timeElapsed >= 60) :
-			if(timeElapsed < 240) :
-				pps1 = pps1 / 2;
-				pps2 = pps2 / 2;
-				pps3 = pps3 / 2;
-				pps4 = pps4 / 2;
 							
-		
 		#this part finds the lowest packets per second of any level1 node
 		lowest = min(pps1, pps2, pps3, pps4);
 		
@@ -258,9 +250,7 @@ while 1:
 		if(int(datatmp[1]) == 4) :
 			pps4 = pps4 + 1;
 		
-		packetsReceived[int(datatmp[0])] = 1;  
-		if newDataPkt == 1 :
-			startTime = time.time();	
+		packetsReceived[int(datatmp[0])] = 1; 	
 		if(int(datatmp[0]) > 30100) :
 			srecev1.close();
 			srecev2.close();
