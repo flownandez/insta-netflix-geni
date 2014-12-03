@@ -69,6 +69,7 @@ pps1 = 0
 pps2 = 0 
 pps3 = 0
 pps4 = 0
+newDataPkt = 0
 packetsReceived = [];
 previousMessages = [" ", " ", " ", " "];
 for i in range(30101) :
@@ -202,7 +203,6 @@ while 1:
 			message2 = message2 + " Y " + str(startingPkt);
 			message3 = message3 + " X " + str(startingPkt);
 			message4 = message4 + " Y " + str(startingPkt);
-
 			reply2_1 = message1 + " B " + message2;
 			reply2_2 = message3 + " B " + message4;
 
@@ -228,6 +228,7 @@ while 1:
 		
 		#print 'Message[' + addr1[0] + ':' + str(addr1[1]) + '] - ' + data1.strip()
 		datatmp = data.split()
+		newDataPkt = int(datatmp[0])
 		#print(datatmp[0] + " " + datatmp[1])
 		if(int(datatmp[1]) == 1) :
 			pps1 = pps1 + 1;
