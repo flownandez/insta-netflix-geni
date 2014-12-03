@@ -143,6 +143,12 @@ while 1:
 				tokensToAllocate4 = 1;#int((pps4 + 12) / lowest);
 
 		totalTokens = tokensToAllocate1 + tokensToAllocate2 + tokensToAllocate3 + tokensToAllocate4;
+		if (totalTokens == 0) :
+			tokensToAllocate1 = 1;
+			tokensToAllocate2 = 1;
+			tokensToAllocate3 = 1;
+			tokensToAllocate4 = 1;
+			totalTokens = 4; 
 
 		#this is where we assign the tokens to each node
 		tokenNumber = 0; #first token to assign will be 0
