@@ -62,6 +62,7 @@ except socket.error:
     sys.exit()
 
 startTime = time.time();
+prevTime = time.time();
 oneSecond = 0;
 reply2_1 = "2 0 X 1 B 2 1 Y 1"
 reply2_2 = "2 0 X 1 B 2 1 Y 1"
@@ -78,9 +79,13 @@ for i in range(30101) :
 ############### now keep talking with the client ###############
 while 1:
 	newTime = time.time();
-	if((newTime - startTime) >= 1) : 
-		startTime = time.time();
+	if((newTime - prevTime) >= 5) : 
+		prevTime = time.time();
 		oneSecond = 1;
+		timeElapsed = newTime - startTime;
+		if(timeElapsed >= 30) :
+			if(timeElapsed < 60) :
+				pps1 = pps1 / 2;			
 		
 		#this part finds the lowest packets per second of any level1 node
 		lowest = min(pps1, pps2, pps3, pps4);
@@ -90,7 +95,7 @@ while 1:
 		print "pps3: ------  " + str(pps3)
 		print "pps4: ------  " + str(pps4)		
 
-
+		
 		#this is where the number of tokens each level1 node gets are assigned
 		if(lowest == 0) :	#this will happen on startup or when we are testing only a couple of the nodes
 			if(pps1 == 0): 
@@ -194,27 +199,27 @@ while 1:
 		if (tokensAllocated4 == 0):
 			message4 = message4 + " 0";
 		
-		if previousMessages == [message1, message2, message3, message4] :
-			previousMessages = [message1, message2, message3, message4];
-			if(newDataPkt > (startingPkt + 100)) :
-				print 'New Message'
-				previousMessages = [message1, message2, message3, message4];
-				message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
-				message2 = message2 + " Y " + str(startingPkt);
-				message3 = message3 + " X " + str(startingPkt);
-				message4 = message4 + " Y " + str(startingPkt);
-				reply2_1 = message1 + " B " + message2;
-				reply2_2 = message3 + " B " + message4;
+		#if previousMessages == [message1, message2, message3, message4] :
+		#	previousMessages = [message1, message2, message3, message4];
+		#	if(newDataPkt > (startingPkt + 100)) :
+		#		print 'New Message'
+		#		previousMessages = [message1, message2, message3, message4];
+		#		message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
+		#		message2 = message2 + " Y " + str(startingPkt);
+		#		message3 = message3 + " X " + str(startingPkt);
+		#		message4 = message4 + " Y " + str(startingPkt);
+		#		reply2_1 = message1 + " B " + message2;
+		#		reply2_2 = message3 + " B " + message4;
 			 
-		else :
-			print 'New Message'
-			previousMessages = [message1, message2, message3, message4];
-			message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
-			message2 = message2 + " Y " + str(startingPkt);
-			message3 = message3 + " X " + str(startingPkt);
-			message4 = message4 + " Y " + str(startingPkt);
-			reply2_1 = message1 + " B " + message2;
-			reply2_2 = message3 + " B " + message4;
+		#else :
+		#print 'New Message'
+		#previousMessages = [message1, message2, message3, message4];
+		message1 = message1 + " X " + str(startingPkt); #message format will be "totalTokens tokens[..] X startingPkt"
+		message2 = message2 + " Y " + str(startingPkt);
+		message3 = message3 + " X " + str(startingPkt);
+		message4 = message4 + " Y " + str(startingPkt);
+		reply2_1 = message1 + " B " + message2;
+		reply2_2 = message3 + " B " + message4;
 
 		pps1 = 0 #reset counters
 		pps2 = 0 
