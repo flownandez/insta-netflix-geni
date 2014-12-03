@@ -25,7 +25,7 @@ print 'Socket bind complete'
  
 firstround = 1
 transtime = 0
-file = open("ScenarioC2_Level1_1_Level2_2.txt", "w")
+file = open("ScenarioC2_Level1_3_Level2_1.txt", "w") #C_1_3_2_1 , 
 #now keep talking with the client
 while 1:
     # receive data from client (data, addr)
