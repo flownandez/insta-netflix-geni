@@ -264,6 +264,7 @@ while 1:
 			break;
 		# send data from clients (data, addr) to layer 4
 		newdata = d[0] 
+		print newdata
 		newaddr = (HOSTsend, PORTsend)
 		ssend.sendto(newdata , newaddr) 
 
